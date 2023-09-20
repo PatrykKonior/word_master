@@ -8,6 +8,11 @@ async function init() {
     let currentRow = 0;
 
 
+    const res = await fetch("https://words.dev-apis.com/word-of-the-day?random=1");
+    const resObj = await res.json();
+    const word = resObj.word.toUpperCase();
+
+    
     function addLetter(letter) {
         if (currentGuess.length < ANSWER_LENGTH) {
             // add letter to the end 
