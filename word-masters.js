@@ -11,8 +11,9 @@ async function init() {
     const res = await fetch("https://words.dev-apis.com/word-of-the-day?random=1");
     const resObj = await res.json();
     const word = resObj.word.toUpperCase();
+    setLoading(false);
 
-    
+
     function addLetter(letter) {
         if (currentGuess.length < ANSWER_LENGTH) {
             // add letter to the end 
@@ -66,4 +67,11 @@ async function init() {
 function isLetter(letter) {
     return /^[a-zA-Z]$/.test(letetr);
 }
+
+
+function setLoading(isLoading) {
+    loadingDiv.classList.toggle('show', isLoading)
+}
+
+
 init()
